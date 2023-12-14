@@ -15,9 +15,9 @@ def selection_sort(lst):
     return frames
 
 def visualise_selection_sort(x,lst):
-    framesselection = selection_sort(lst)
-    figure = px.bar(x=x, y=framesselection[0])
-    return figure, framesselection
+    frames = selection_sort(lst)
+    figure = px.bar(x=x, y=frames[0])
+    return figure, frames
 
 data = {
     'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
