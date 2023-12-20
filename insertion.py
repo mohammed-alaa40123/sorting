@@ -15,7 +15,7 @@ def insertion_sort (lst):
             j -= 1
             lst[j+1] = start
             frames.append(lst.copy())
-            
+
     return frames
         
 
@@ -27,10 +27,9 @@ def visualise_insertion_sort(x,lst):
 
 data = {
     'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
-    'Complexity': ['O(n × log n)', 'O(n × log n)', 'O(n × log n)', 'O(n)']
+    'Complexity': ['O(n^2)', 'O(n)', 'O(n^2)', 'O(1)']
 }
 
 complexity_df = pd.DataFrame(data)
-def show_complexity_selection():
+def show_complexity_insertion():
     st.sidebar.dataframe(complexity_df,hide_index=True)
-
