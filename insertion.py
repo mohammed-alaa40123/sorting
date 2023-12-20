@@ -6,11 +6,11 @@ def insertion_sort (lst):
     size = len(lst)
     frames = []
 
-    for x in range (size):
+    for x in range (1,size):
         start = lst[x]
         j = x-1
 
-        while (start < lst[x] & start >= 0):
+        while (start < lst[x] & j >= 0):
             lst[j+1] = lst[j]
             j -= 1
             lst[j+1] = start
