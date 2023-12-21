@@ -10,11 +10,11 @@ def insertion_sort (lst):
         start = lst[x]
         j = x-1
 
-        while (start < lst[x] & j >= 0):
+        while start < lst[j] and j >= 0 :
             lst[j+1] = lst[j]
             j -= 1
-            lst[j+1] = start
-            frames.append(lst.copy())
+        lst[j+1] = start
+        frames.append(lst.copy())
 
     return frames
         
