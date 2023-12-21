@@ -30,7 +30,7 @@ def merge(arr, l, m, r):
         else:
             arr[k] = R[j]
             j += 1
-        frames.append(l)
+        frames.append(arr.copy())
         k += 1
  
     # Copy the remaining elements of L[], if there
@@ -39,7 +39,7 @@ def merge(arr, l, m, r):
         arr[k] = L[i]
         i += 1
         k += 1
-        frames.append(l)
+        frames.append(arr.copy())
  
     # Copy the remaining elements of R[], if there
     # are any
@@ -47,7 +47,8 @@ def merge(arr, l, m, r):
         arr[k] = R[j]
         j += 1
         k += 1
-        frames.append(l)
+        frames.append(arr.copy())
+    return frames
  
 # l is for left index and r is right index of the
 # sub-array of arr to be sorted
@@ -64,12 +65,12 @@ def mergeSort(arr, l, r):
         # Sort first and second halves
         mergeSort(arr, l, m)
         mergeSort(arr, m+1, r)
-        frames.append(merge(arr, l, m, r))
+        frames.extend(merge(arr, l, m, r))
     return frames
-def visualize_mergesort(x,l):
-    sz=len(l)
-    frames = mergeSort(l,0,sz-1)
-    figure = px.bar(x=x, y=frames[0])
+def visualize_mergesort(x,lst):
+    frames = mergeSort(lst,0,len(lst)-1)
+    
+    figure = px.bar(x, y=frames[0])
     return figure, frames
 
 data = {
