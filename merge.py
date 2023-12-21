@@ -67,7 +67,8 @@ def mergeSort(arr, l, r):
         frames.append(merge(arr, l, m, r))
     return frames
 def visualize_mergesort(x,l):
-    frames = mergeSort(l)
+    sz=len(l)
+    frames = mergeSort(l,0,sz-1)
     figure = px.bar(x=x, y=frames[0])
     return figure, frames
 
