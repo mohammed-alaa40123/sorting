@@ -8,6 +8,7 @@ from merge import *
 from quicksort import *
 from comb import *
 import plotly.express as px
+st.set_page_config(layout='wide')
 
 st.sidebar.title("Select sorting type")
 sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort","Comb Sort"])

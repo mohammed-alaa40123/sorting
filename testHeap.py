@@ -20,6 +20,23 @@ def heapify(lst, n, i, frames):
         heapify(lst, n, largest, frames)
 
 def heap_sort(lst):
+    lst = lst.copy()
+    n = len(lst)
+    frames = [(lst.copy(), -1, -1)]  
+
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(lst, n, i, frames)
+
+    while n > 1:
+        lst[0], lst[n - 1] = lst[n - 1], lst[0]
+        frames.append((lst.copy(), n - 1, 0))  # Save frame after swapping
+        heapify(lst, n - 1, 0, frames)
+        n -= 1
+
+    return frames
+
+def h_heap_sort(lst):
+    lst = lst.copy()
     n = len(lst)
     frames = [(lst.copy(), -1, -1)]  
 
@@ -29,18 +46,18 @@ def heap_sort(lst):
     while n > 0:
         lst[0], lst[n - 1] = lst[n - 1], lst[0]
         frames.append((lst.copy(), n - 1, 0))  # Save frame after swapping
+        lst.pop((lst.index(max(lst))))
         heapify(lst, n - 1, 0, frames)
         n -= 1
 
     return frames
 
-def visualize_heap_sort(frames):
+def visualize_heap_sort(frames,fframes):
     fig = go.Figure()
-
+    
     placeholder = st.empty()
     list_placeholder = st.empty()
-
-
+    j=0
     for i, (frame, arrow_start, arrow_end) in enumerate(frames):
         g = ig.Graph.Tree(len(frame), 2)
         g["number"] = frame
@@ -102,11 +119,13 @@ def visualize_heap_sort(frames):
         fig.update_yaxes(visible=False)
 
         placeholder.plotly_chart(fig, use_container_width=True)
-        # break
-        list_placeholder.text_area("List", value=" ".join(map(str, frame)), height=50,key=f"{i}list")
-
+        
+        if j<len(fframes):
+            list_placeholder.metric("List", value=" ".join(map(str, fframes[j][0])))
+            j+=1
         time.sleep(1)  
         fig.data = [] 
+    placeholder.empty()
 
 data = {
     'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
@@ -119,12 +138,11 @@ def show_complexity_heap():
 
 
 def main():
-    i = 0
-    arr = st.text_input("Enter a list of numbers (space-separated):",key=f"inputy{i}")
-    i+=2
+    arr = st.text_input("Enter a list of numbers (space-separated):")
     arr = list(map(int, arr.split()))
 
     if st.button("Heap Sort"):
         frames = heap_sort(arr)
-        visualize_heap_sort(frames)
+        h_frames = h_heap_sort(arr)
+        visualize_heap_sort(h_frames,frames)
 
