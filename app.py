@@ -34,7 +34,9 @@ if sortingOption == "Heap Sort":
     show_complexity_heap()
     st.stop()
     
-    
+figure.update_layout(showlegend=False)
+figure.update_xaxes(visible=False)
+figure.update_yaxes(visible=False)
 plot_spot = st.empty()
 with plot_spot:
             st.plotly_chart(figure)
@@ -44,6 +46,9 @@ play_button = st.button("Sort")
 if play_button:
     for frame in frames[1:]:
         figure = px.bar(x=x, y=frame)
+        figure.update_layout(showlegend=False)
+        figure.update_xaxes(visible=False)
+        figure.update_yaxes(visible=False)
         time.sleep(0.2)
         with plot_spot:
             st.plotly_chart(figure)
