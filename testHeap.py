@@ -19,42 +19,30 @@ def heapify(lst, n, i, frames):
         frames.append((lst.copy(), i, largest))  # Save frame after heapify operation
         heapify(lst, n, largest, frames)
 
-def heap_sort(lst):
-    lst = lst.copy()
-    n = len(lst)
-    frames = [(lst.copy(), -1, -1)]  
-
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(lst, n, i, frames)
-
-    while n > 1:
-        lst[0], lst[n - 1] = lst[n - 1], lst[0]
-        frames.append((lst.copy(), n - 1, 0))  # Save frame after swapping
-        heapify(lst, n - 1, 0, frames)
-        n -= 1
-
-    return frames
 
 def h_heap_sort(lst):
     lst = lst.copy()
     n = len(lst)
     frames = [(lst.copy(), -1, -1)]  
-
+    fframes = []
+    frame=[]
     for i in range(n // 2 - 1, -1, -1):
         heapify(lst, n, i, frames)
 
     while n > 0:
         lst[0], lst[n - 1] = lst[n - 1], lst[0]
         frames.append((lst.copy(), n - 1, 0))  # Save frame after swapping
-        lst.pop((lst.index(max(lst))))
+        # print(frame)
+        f = (lst.pop((lst.index(max(lst)))))
+        frame.append(f)
+        fframes.append(frame.copy())
         heapify(lst, n - 1, 0, frames)
         n -= 1
 
-    return frames
+    return frames,fframes
 
 def visualize_heap_sort(frames,fframes):
     fig = go.Figure()
-    
     placeholder = st.empty()
     list_placeholder = st.empty()
     j=0
@@ -120,12 +108,13 @@ def visualize_heap_sort(frames,fframes):
 
         placeholder.plotly_chart(fig, use_container_width=True)
         
-        if j<len(fframes):
-            list_placeholder.metric("List", value=" ".join(map(str, fframes[j][0])))
-            j+=1
+        if len(frame)!=len(fframes):
+            list_placeholder.metric("List", value=" ".join(map(str, reversed(fframes[len(fframes)-len(frame)-1]))))
         time.sleep(1)  
         fig.data = [] 
     placeholder.empty()
+    list_placeholder.metric("List", value=" ".join(map(str, reversed(fframes[len(fframes)-1]))))
+
 
 data = {
     'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
@@ -142,7 +131,6 @@ def main():
     arr = list(map(int, arr.split()))
 
     if st.button("Heap Sort"):
-        frames = heap_sort(arr)
-        h_frames = h_heap_sort(arr)
-        visualize_heap_sort(h_frames,frames)
+        frames,fframes = h_heap_sort(arr)
+        visualize_heap_sort(frames,fframes)
 
