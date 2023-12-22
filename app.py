@@ -6,6 +6,7 @@ from testHeap import *
 from insertion import *
 from merge import *
 from quicksort import *
+from bubble import *
 import plotly.express as px
 
 st.sidebar.title("Select sorting type")
@@ -37,7 +38,11 @@ if sortingOption == "Heap Sort":
     
 if sortingOption == "Quick Sort":
     figure,frames=visualise_quick_sort(x,lst)
-    show_complexity_quicksort()        
+    show_complexity_quicksort()   
+    
+if sortingOption == "Bubble Sort":
+    figure,frames=visualise_bubble_sort(x,lst)
+    show_complexity_bubble()         
     
 figure.update_layout(showlegend=False)
 figure.update_xaxes(visible=False)
