@@ -23,9 +23,9 @@ def comb_sort (lst) :
             if lst[i] > lst[i + gap]:
                 lst[i], lst[i + gap]=lst[i + gap], lst[i]
                 swapped = True
+                frames.append(lst.copy())
 
-    frames.append(lst.copy())
-
+    
     return frames
 
 
