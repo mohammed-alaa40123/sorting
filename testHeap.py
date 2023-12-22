@@ -26,12 +26,11 @@ def heap_sort(lst):
     for i in range(n // 2 - 1, -1, -1):
         heapify(lst, n, i, frames)
 
-    heap_size = n
-    while heap_size > 0:
-        lst[0], lst[heap_size - 1] = lst[heap_size - 1], lst[0]
-        frames.append((lst.copy(), heap_size - 1, 0))  # Save frame after swapping
-        heapify(lst, heap_size - 1, 0, frames)
-        heap_size -= 1
+    while n > 0:
+        lst[0], lst[n - 1] = lst[n - 1], lst[0]
+        frames.append((lst.copy(), n - 1, 0))  # Save frame after swapping
+        heapify(lst, n - 1, 0, frames)
+        n -= 1
 
     return frames
 
