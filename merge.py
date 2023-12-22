@@ -54,8 +54,8 @@ def merge(arr, l, m, r):
 # sub-array of arr to be sorted
  
  
-def mergeSort(arr, l, r):
-    frames=[]
+def mergeSort(arr, l, r,frames):
+    
     if l < r:
  
         # Same as (l+r)//2, but avoids overflow for
@@ -63,15 +63,20 @@ def mergeSort(arr, l, r):
         m = l+(r-l)//2
  
         # Sort first and second halves
-        mergeSort(arr, l, m)
-        mergeSort(arr, m+1, r)
+        mergeSort(arr, l, m,frames)
+        mergeSort(arr, m+1, r,frames)
         frames.extend(merge(arr, l, m, r))
-    return frames
+    
 def visualize_mergesort(x,lst):
     frames = []
-    frames.append(lst)
-    frames.extend(mergeSort(lst,0,len(lst)-1))
+    print("new test")
     
+    frames.append(lst.copy())
+    
+    mergeSort(lst,0,len(lst)-1,frames)
+   
+    print(lst)
+    print(frames)
     figure = px.bar(x, y=frames[0])
     return figure, frames
 
