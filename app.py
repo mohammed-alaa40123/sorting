@@ -6,10 +6,11 @@ from testHeap import *
 from insertion import *
 from merge import *
 from quicksort import *
+from comb import *
 import plotly.express as px
 
 st.sidebar.title("Select sorting type")
-sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort"])
+sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort","Comb Sort"])
 st.title(f"{sortingOption} Visualisation")
 amount = 0
 if sortingOption != "Heap Sort":
@@ -37,7 +38,11 @@ if sortingOption == "Heap Sort":
     
 if sortingOption == "Quick Sort":
     figure,frames=visualise_quick_sort(x,lst)
-    show_complexity_quicksort()        
+    show_complexity_quicksort()   
+
+if sortingOption == "Comb Sort":
+    figure,frames=visualise_comb_sort(x,lst)
+    show_complexity_insertion()     
     
 figure.update_layout(showlegend=False)
 figure.update_xaxes(visible=False)
