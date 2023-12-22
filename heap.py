@@ -131,7 +131,7 @@ def visualize_heap_sort(x,lst):
         lst.pop(0)
         frames.append(lst)
         heap_frames.append(mh.copy())
-    for i in lst:
+    for i in range(sz):
         lst.append(mh.remove())
         frames.append(lst)
         heap_frames.append(mh)
