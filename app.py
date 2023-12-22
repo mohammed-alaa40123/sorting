@@ -5,6 +5,7 @@ from selection import *
 from testHeap import *
 from insertion import *
 from merge import *
+from quicksort import *
 import plotly.express as px
 
 st.sidebar.title("Select sorting type")
@@ -33,6 +34,10 @@ if sortingOption == "Heap Sort":
     main()
     show_complexity_heap()
     st.stop()
+    
+if sortingOption == "Quick Sort":
+    figure,frames=visualise_quick_sort(x,lst)
+    show_complexity_quicksort()        
     
 figure.update_layout(showlegend=False)
 figure.update_xaxes(visible=False)
