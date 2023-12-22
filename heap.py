@@ -127,7 +127,7 @@ def visualize_heap_sort(x,lst):
     heap_figure=visualize_heap(mh)
     frames.append(lst.copy())
     for i in lst:
-        mh.insert(lst)
+        mh.insert(i)
         lst.pop(0)
         frames.append(lst)
         heap_frames.append(mh.copy())
