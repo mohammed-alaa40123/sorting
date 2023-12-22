@@ -109,14 +109,23 @@ def visualize_heap_sort(frames):
         time.sleep(1)  
         fig.data = [] 
 
-def main():
-    st.title("Heap Sort Visualization")
+data = {
+    'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
+    'Complexity': ['O(n × log n)', 'O(n × log n)', 'O(n × log n)', 'O(1)']
+}
+import pandas as pd
+complexity_df = pd.DataFrame(data)
+def show_complexity_heap():
+    st.sidebar.dataframe(complexity_df,hide_index=True)
 
-    arr = st.text_input("Enter a list of numbers (space-separated):")
+
+def main():
+    i = 0
+    arr = st.text_input("Enter a list of numbers (space-separated):",key=f"inputy{i}")
+    i+=2
     arr = list(map(int, arr.split()))
 
     if st.button("Heap Sort"):
         frames = heap_sort(arr)
         visualize_heap_sort(frames)
 
-main()
