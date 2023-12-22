@@ -42,7 +42,7 @@ if sortingOption == "Quick Sort":
 
 if sortingOption == "Comb Sort":
     figure,frames=visualise_comb_sort(x,lst)
-    show_complexity_insertion()     
+    show_complexity_comb()     
     
 figure.update_layout(showlegend=False)
 figure.update_xaxes(visible=False)

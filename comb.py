@@ -13,7 +13,7 @@ def comb_sort (lst) :
 
     while swapped == True or gap != 1 :
 
-        gap = (gap * 10)/13
+        gap = int((gap * 10)/13)
         if gap < 1 :
             gap = 1
 
@@ -40,5 +40,5 @@ data = {
 }
 
 complexity_df = pd.DataFrame(data)
-def show_complexity_insertion():
+def show_complexity_comb():
     st.sidebar.dataframe(complexity_df,hide_index=True)
