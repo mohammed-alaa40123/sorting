@@ -24,7 +24,7 @@ def comb_sort (lst) :
                 lst[i], lst[i + gap]=lst[i + gap], lst[i]
                 swapped = True
 
-    frames.append(lst)
+    frames.append(lst.copy())
 
     return frames
 
