@@ -36,7 +36,7 @@ def visualise_comb_sort(x,lst):
 
 data = {
     'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
-    'Complexity': ['O(n^2)', 'O(n)', 'O(n^2)', 'O(1)']
+    'Complexity': ['O(n^2)', 'O(n × log n)', 'O(n^2)', 'O(1)']
 }
 
 complexity_df = pd.DataFrame(data)
