@@ -40,5 +40,5 @@ data = {
 }
 
 complexity_df = pd.DataFrame(data)
-def show_complexity_insertion():
+def show_complexity_comb():
     st.sidebar.dataframe(complexity_df,hide_index=True)
