@@ -126,7 +126,7 @@ def show_complexity_heap():
     st.sidebar.dataframe(complexity_df,hide_index=True)
 
 
-def main():
+def mainheap():
     arr = st.text_input("Enter a list of numbers (space-separated):")
     arr = list(map(int, arr.split()))
 
