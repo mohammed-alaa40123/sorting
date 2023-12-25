@@ -7,16 +7,13 @@ from insertion import *
 from merge import *
 from quicksort import *
 from comb import *
-from bucket import*
-from bubble import *
 import plotly.express as px
-st.set_page_config(layout='wide')
 
 st.sidebar.title("Select sorting type")
-sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort","Comb Sort","Bucket Sort"])
+sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort","Comb Sort"])
 st.title(f"{sortingOption} Visualisation")
 amount = 0
-if sortingOption != "Heap Sort" and sortingOption!= "Bucket Sort":
+if sortingOption != "Heap Sort":
     amount = st.slider("Select number of elements", min_value=5, max_value=100)
 
 lst = np.random.randint(0, 100, amount)
@@ -35,7 +32,7 @@ if sortingOption == "Merge Sort":
     show_complexity_insertion()
 
 if sortingOption == "Heap Sort":
-    mainheap()
+    main()
     show_complexity_heap()
     st.stop()
     
@@ -45,18 +42,7 @@ if sortingOption == "Quick Sort":
 
 if sortingOption == "Comb Sort":
     figure,frames=visualise_comb_sort(x,lst)
-<<<<<<< HEAD
     show_complexity_comb()     
-=======
-    show_complexity_comb()
-if sortingOption == "Bubble Sort":
-    figure,frames=visualise_bubble_sort(x,lst)
-    show_complexity_bubble()
-if sortingOption == "Bucket Sort":
-        mainbucket()
-        
-        st.stop()
->>>>>>> ed104f81420ee8a5d149e5e150a8ff51463b2069
     
 figure.update_layout(showlegend=False)
 figure.update_xaxes(visible=False)
@@ -65,7 +51,7 @@ plot_spot = st.empty()
 with plot_spot:
             st.plotly_chart(figure)
 
-play_button = st.button(f"{sortingOption}")
+play_button = st.button("Sort")
 
 if play_button:
     for frame in frames[1:]:
