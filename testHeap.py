@@ -19,29 +19,33 @@ def heapify(lst, n, i, frames):
         frames.append((lst.copy(), i, largest))  # Save frame after heapify operation
         heapify(lst, n, largest, frames)
 
-def heap_sort(lst):
+
+def h_heap_sort(lst):
+    lst = lst.copy()
     n = len(lst)
     frames = [(lst.copy(), -1, -1)]  
-
+    fframes = []
+    frame=[]
     for i in range(n // 2 - 1, -1, -1):
         heapify(lst, n, i, frames)
 
-    heap_size = n
-    while heap_size > 0:
-        lst[0], lst[heap_size - 1] = lst[heap_size - 1], lst[0]
-        frames.append((lst.copy(), heap_size - 1, 0))  # Save frame after swapping
-        heapify(lst, heap_size - 1, 0, frames)
-        heap_size -= 1
+    while n > 0:
+        lst[0], lst[n - 1] = lst[n - 1], lst[0]
+        frames.append((lst.copy(), n - 1, 0))  # Save frame after swapping
+        # print(frame)
+        f = (lst.pop((lst.index(max(lst)))))
+        frame.append(f)
+        fframes.append(frame.copy())
+        heapify(lst, n - 1, 0, frames)
+        n -= 1
 
-    return frames
+    return frames,fframes
 
-def visualize_heap_sort(frames):
+def visualize_heap_sort(frames,fframes):
     fig = go.Figure()
-
     placeholder = st.empty()
     list_placeholder = st.empty()
-
-
+    j=0
     for i, (frame, arrow_start, arrow_end) in enumerate(frames):
         g = ig.Graph.Tree(len(frame), 2)
         g["number"] = frame
@@ -103,11 +107,14 @@ def visualize_heap_sort(frames):
         fig.update_yaxes(visible=False)
 
         placeholder.plotly_chart(fig, use_container_width=True)
-        # break
-        list_placeholder.text_area("List", value=" ".join(map(str, frame)), height=50,key=f"{i}list")
-
+        
+        if len(frame)!=len(fframes):
+            list_placeholder.metric("List", value=" ".join(map(str, reversed(fframes[len(fframes)-len(frame)-1]))))
         time.sleep(1)  
         fig.data = [] 
+    placeholder.empty()
+    list_placeholder.metric("List", value=" ".join(map(str, reversed(fframes[len(fframes)-1]))))
+
 
 data = {
     'Case': ['Average Complexity', 'Best Case', 'Worst Case', 'Space Complexity'],
@@ -119,13 +126,11 @@ def show_complexity_heap():
     st.sidebar.dataframe(complexity_df,hide_index=True)
 
 
-def main():
-    i = 0
-    arr = st.text_input("Enter a list of numbers (space-separated):",key=f"inputy{i}")
-    i+=2
+def mainheap():
+    arr = st.text_input("Enter a list of numbers (space-separated):")
     arr = list(map(int, arr.split()))
 
     if st.button("Heap Sort"):
-        frames = heap_sort(arr)
-        visualize_heap_sort(frames)
+        frames,fframes = h_heap_sort(arr)
+        visualize_heap_sort(frames,fframes)
 
