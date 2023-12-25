@@ -12,7 +12,16 @@ import streamlit as st
 # Function to visualize the array of linked lists
 def visualize_linked_lists(linked_lists):
     fig = go.Figure()
-
+    fig.add_trace(go.Scatter(
+                x=[18],
+                y=[1],
+                
+                marker=dict(size=25, color='black'),
+                
+                
+                
+                
+            ))
     
     y = 0  
     for i, linked_list in enumerate(linked_lists):
@@ -21,12 +30,12 @@ def visualize_linked_lists(linked_lists):
         
         fig.add_shape(
             type='rect',
-            x0=-0.4,  
+            x0=-2,
             y0=y-0.4,  
-            x1=0, 
+            x1=1.5, 
             y1=y+0.4,  
             line=dict(color='black', width=2),
-            fillcolor='white',
+            fillcolor='red',
             layer='below',
         )
 
