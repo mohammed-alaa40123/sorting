@@ -3,25 +3,14 @@ from quicksort import *
 import time
 import numpy as np
 import streamlit as st
-#st.set_page_config(layout='wide')
+
+st.session_state.sidebar_state = 'collapsed'
+st.set_page_config(layout='wide',
+                   initial_sidebar_state=st.session_state.get('sidebar_state','expanded'))
 
 
-
-
-# Function to visualize the array of linked lists
 def visualize_linked_lists(linked_lists,length):
     fig = go.Figure()
-    fig.add_trace(go.Scatter(
-                x=[45],
-                y=[1],
-                
-                marker=dict(size=25, color='black'),
-                
-                
-                
-                
-            ))
-    
     y = 0  
     for i, linked_list in enumerate(linked_lists):
         
@@ -39,7 +28,7 @@ def visualize_linked_lists(linked_lists,length):
         )
 
         fig.add_annotation(
-            x=-3,  # x-coordinate for the text in the square
+            x=-3,  
             y=y,
             text=f"Bucket {i+1}",
             showarrow=False,
@@ -47,7 +36,7 @@ def visualize_linked_lists(linked_lists,length):
             align='right'
         )
         
-        x += 1  # Increment x-coordinate for node positioning
+        x += 1  
         
         for i in range(len(linked_list)):
             fig.add_trace(go.Scatter(
@@ -73,16 +62,14 @@ def visualize_linked_lists(linked_lists,length):
 
         y -= 1
 
-    # Configure layout
     fig.update_layout(
         title="Array of Linked Lists",
         showlegend=False,
         hovermode='closest',
+        autosize=False,
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
     )
-
-    # Show the figure
     return fig
 def vis_quick_sort(x,lst,ind):
    
@@ -104,10 +91,9 @@ def bucket_sort(nb,l):
     max=l[0]
     for i in l:
         if i>max:
-            max=i;
+            max=i
     indexfactor=(nb)/max
     frames=[]
-    #frames.append(bucket)
     for i in l:
         indx=int(i*indexfactor)
         
