@@ -103,16 +103,15 @@ def show_selection_explaination():
 <li>The selection sort algorithm is made up of two nested loops.</li>
 <li>It has an O (n2) time complexity due to the two nested loops.</li>
 </ul>
-<p>Best Case Complexity occurs when there is no need for sorting, i.e., the array has already been sorted. The time complexity of selection sort in the best-case scenario is O(n2).</p>
-<p>Average Case Complexity occurs when the array elements are arranged in a jumbled order that is neither ascending nor descending correctly. The selection sort has an average case time complexity of O(n2).</p>
-<p>Worst-case complexity - Worst case occurs when array elements must be sorted in reverse order. Assume you need to sort the array elements in ascending order, but they are in descending order. Selection sort has a worst-case time complexity of O(n2).</p>
-<p>The space complexity of the selection sort algorithm is:</p>
+<h3>Best Case Complexity</h3> <p>When there is no need for sorting, i.e., the array has already been sorted. The time complexity of selection sort in the best-case scenario is O(n2).</p>
+<h3>Average Case Complexity</h3> <p>When the array elements are arranged in a jumbled order that is neither ascending nor descending correctly. The selection sort has an average case time complexity of O(n2).</p>
+<h3>Worst-case complexity</h3> <p>Worst case occurs when array elements must be sorted in reverse order. Assume you need to sort the array elements in ascending order, but they are in descending order. Selection sort has a worst-case time complexity of O(n2).</p>
+<h3>Space complexity</h3>
 <ul>
 <li>An in-place algorithm is a selection sort algorithm.</li>
 <li>It performs all computations in the original array and does not use any other arrays.</li>
 <li>As a result, the space complexity is O(1).</li>
 </ul>
-<p>You will now look at some applications of the selection sort algorithm in this tutorial.</p>
 <h2>Applications of Selection Sort Algorithm</h2>
 <p>The following are some applications of how to use selection sort:</p>
 <ul>

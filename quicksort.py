@@ -61,7 +61,7 @@ def show_complexity_quicksort():
     
     
 
-def show__code(lang):
+def show_quick_code(lang):
     if lang == "Python":
         code = """
 \ndef partition(array, low, high):
@@ -155,21 +155,21 @@ void quickSort(std::vector<int>& arr, int low, int high) {
 def show_quick_explaination():
     content =  """<div><article>
     
-    
-    <h2>What Is a Quick Sort Algorithm?</h2>
-    
-  QuickSort is a sorting algorithm based on the Divide and Conquer algorithm that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
+
+<h2>What Is a Quick Sort Algorithm?</h2>
+
+QuickSort is a sorting algorithm based on the Divide and Conquer algorithm that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
 
 <h2>The Complexity of quick Sort Algorithm</h2>
 The average and worst cases are O(nlogn) and this is thanks to the divide and conquer technique. However, the worst case is O(n^2) and here comes the irony you may think that it takes this huge time because the array is so messed up, but actually this happens only if the array is already sorted. Funny, isn't it?
 
-Best Use Cases:
+<h3>Best Use Cases:</h3>
 
 QuickSort is a highly efficient and widely used sorting algorithm for general-purpose sorting.
 It has an average-case time complexity of O(n log n), making it faster than many other sorting algorithms.
 QuickSort is often preferred in practice for large datasets due to its speed.
 
-When to Use:
+<h3>When to Use:</h3>
 
 Use QuickSort when you need a fast and efficient sorting algorithm for general-purpose sorting.
 It is suitable for both small and large datasets, and its average-case performance is often better than other sorting algorithms like Bubble Sort or Insertion Sort.

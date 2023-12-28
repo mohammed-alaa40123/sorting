@@ -20,7 +20,7 @@ def bubble_sort(lst):
 
 def visualise_bubble_sort(x,lst):
     frames = bubble_sort(lst)
-    figure = px.bar(x=x, y=frames[0])
+    figure = px.bar(x=x, y=frames[0],color=frames[0])
     return figure, frames
 
 data = {
@@ -99,16 +99,16 @@ def show_bubble_explaination():
     content =  """<div><article>
     
     
-    <h2>What Is a Bubble Sort Algorithm?</h2>
-    
-    Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. As a fun fact it is called bubble sort because it treats every two adjacent elements as bubbles and sorts them. This sorting technique is mostly used for educational purposes due to its simplicity.
+<h2>What Is a Bubble Sort Algorithm?</h2>
+
+Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. As a fun fact it is called bubble sort because it treats every two adjacent elements as bubbles and sorts them. This sorting technique is mostly used for educational purposes due to its simplicity.
 
 
 <h2>The Complexity of Bubble Sort Algorithm</h2>
 It is always O(n^2) since it has nested loops and iterates over them. However, with a simple optimization where there isn't any swaps taking place it becomes O(n) due to a simple if condition.
 <p>The time complexity of the selection sort algorithm is:</p>
 
-Best Use Cases:
+<h3>Best Use Cases:</h3>
 
 Bubble Sort is a simple sorting algorithm that works well for small datasets.
 It is easy to understand and implement, making it suitable for educational purposes and scenarios where simplicity is a priority.
