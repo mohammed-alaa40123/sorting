@@ -45,7 +45,9 @@ def visualise_quick_sort(x,lst):
     quick_sort(lst,0,len(lst)-1,frames)
     print(frames)
     figure = px.bar(x=x, y=frames[0])
-    
+    figure.update_layout(showlegend=False)
+    figure.update_xaxes(visible=False)
+    figure.update_yaxes(visible=False)
     return figure, frames
 
 data = {
