@@ -1,8 +1,9 @@
 import streamlit as st
 import numpy as np
 from time import time
+from codeexplaination import *
 from selection import *
-from testHeap import *
+from heap import *
 from bubble import *
 from bucket import *
 from insertion import *
@@ -70,9 +71,7 @@ if play_button:
         time.sleep(0.2)
         with plot_spot:
             st.plotly_chart(figure)
-
-       
-
-        
-    
-
+            
+st.header("Description")            
+show_selection_explaination()
+show_code(sortingOption)

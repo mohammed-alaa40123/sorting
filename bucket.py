@@ -62,6 +62,7 @@ def visualize_linked_lists(linked_lists,length):
 
         y -= 1
 
+
     fig.update_layout(
         title="Array of Linked Lists",
         showlegend=False,
@@ -70,6 +71,7 @@ def visualize_linked_lists(linked_lists,length):
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
     )
+
     return fig
 def vis_quick_sort(x,lst,ind):
    
@@ -78,7 +80,11 @@ def vis_quick_sort(x,lst,ind):
     quick_sort(lst,0,len(lst)-1,frames)
     
     for i in frames:
-        figures.append([px.bar(x=x, y=i,title=f"Sorting Bucket #{ind}"),'Q'])
+        figure = px.bar(x=x, y=i,title=f"Sorting Bucket #{ind}")
+        figure.update_layout(showlegend=False)
+        figure.update_xaxes(visible=False)
+        figure.update_yaxes(visible=False)
+        figures.append([figure,'Q'])
     
     return figures
 
