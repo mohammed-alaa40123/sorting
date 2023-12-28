@@ -1,4 +1,3 @@
-
 import plotly.graph_objects as go
 from quicksort import *
 import time
@@ -10,10 +9,10 @@ import streamlit as st
 
 
 # Function to visualize the array of linked lists
-def visualize_linked_lists(linked_lists):
+def visualize_linked_lists(linked_lists,length):
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-                x=[18],
+                x=[45],
                 y=[1],
                 
                 marker=dict(size=25, color='black'),
@@ -30,7 +29,7 @@ def visualize_linked_lists(linked_lists):
         
         fig.add_shape(
             type='rect',
-            x0=-2,
+            x0=-5,
             y0=y-0.4,  
             x1=1.5, 
             y1=y+0.4,  
@@ -40,7 +39,7 @@ def visualize_linked_lists(linked_lists):
         )
 
         fig.add_annotation(
-            x=-0.2,  # x-coordinate for the text in the square
+            x=-3,  # x-coordinate for the text in the square
             y=y,
             text=f"Bucket {i+1}",
             showarrow=False,
@@ -55,7 +54,7 @@ def visualize_linked_lists(linked_lists):
                 x=[x],
                 y=[y],
                 mode='markers+text',
-                marker=dict(size=25, color='blue'),
+                marker=dict(size=10, color='blue'),
                 text=[f"{linked_list[i]}"],
                 textposition='middle center',
                 hoverinfo='text',
@@ -85,18 +84,19 @@ def visualize_linked_lists(linked_lists):
 
     # Show the figure
     return fig
-def vis_quick_sort(x,lst):
-    
+def vis_quick_sort(x,lst,ind):
+   
     frames=[lst.copy()]
     figures=[]
     quick_sort(lst,0,len(lst)-1,frames)
     
     for i in frames:
-        figures.append([px.bar(x=x, y=i),'Q'])
+        figures.append([px.bar(x=x, y=i,title=f"Sorting Bucket #{ind}"),'Q'])
     
     return figures
 
 def bucket_sort(nb,l):
+    length=len(l)
     bucket=[]
     for i in range(nb+1):
         bucket.append([])
@@ -112,17 +112,19 @@ def bucket_sort(nb,l):
         indx=int(i*indexfactor)
         
         bucket[indx].append(i)
-        frames.append([visualize_linked_lists(bucket),'B'])
+        frames.append([visualize_linked_lists(bucket,length),'B'])
     array=[]
+    index=0
     for i in bucket:
+        index=index+1
         sz=len(i)
         if sz!=0:
             x=np.arange(0,sz,1)
-            frames.extend(vis_quick_sort(x,i))
+            frames.extend(vis_quick_sort(x,i,index))
             for j in i:
                 array.append(j)
                 frames.append([array.copy(),'L'])
-            frames.append([visualize_linked_lists(bucket),'B'])
+            frames.append([visualize_linked_lists(bucket,length),'B'])
     
     return frames
             
@@ -152,5 +154,4 @@ def mainbucket():
                     else:
                             with text_holder:
                                 st.text_area("List",frame[0])
-                    time.sleep(1)
-                
+                    time.sleep(0.2)
