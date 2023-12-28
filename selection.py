@@ -16,7 +16,7 @@ def selection_sort(lst):
 
 def visualise_selection_sort(x,lst):
     frames = selection_sort(lst)
-    figure = px.bar(x=x, y=frames[0])
+    figure = px.bar(x=x, y=frames[0],color=frames[0])
     return figure, frames
 
 data = {
