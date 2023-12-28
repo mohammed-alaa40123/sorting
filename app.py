@@ -11,7 +11,7 @@ amount = 0
 
 if sortingOption != "Heap Sort" and sortingOption != "Bucket Sort":
     amount = st.slider("Select number of elements", min_value=5, max_value=100)
-col1,col3 = st.columns([3,2])
+col1,col3 = st.columns([3,1])
 
 lst = np.random.randint(0, 100, amount)
 x = np.arange(0, amount, 1)
