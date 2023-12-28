@@ -5,8 +5,6 @@ import numpy as np
 import streamlit as st
 
 st.session_state.sidebar_state = 'collapsed'
-st.set_page_config(layout='wide',
-                   initial_sidebar_state=st.session_state.get('sidebar_state','expanded'))
 
 
 def visualize_linked_lists(linked_lists,length):
@@ -135,7 +133,7 @@ def mainbucket():
                 
 
             with plot_spot:
-                    col1,col2=st.columns(2)
+                    col1,col2=st.columns([3,1])
                     if(frame[1]=='Q'):
                         
                             with col2:

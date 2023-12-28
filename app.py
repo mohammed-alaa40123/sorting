@@ -3,6 +3,8 @@ import numpy as np
 from time import time
 from codeexplaination import *
 import plotly.express as px
+st.set_page_config(layout='wide',
+                   initial_sidebar_state=st.session_state.get('sidebar_state','expanded'))
 
 st.sidebar.title("Select sorting type")
 sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort","Comb Sort","Bucket Sort"])

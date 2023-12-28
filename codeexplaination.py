@@ -9,14 +9,14 @@ from quicksort import *
 from comb import *
 # Create a mapping between sorting options and the corresponding show_code functions
 sorting_options_mapping = {
-    "Selection Sort": [show_selection_code,show_selection_explaination],
-    # "Bubble Sort": show_bubble_sort_code,
-    # "Insertion Sort": show_insertion_sort_code,
-    # "Merge Sort": show_merge_sort_code,
-    # "Heap Sort": show_heap_sort_code,
-    # "Bucket Sort": show_bucket_sort_code,
-    # "Quick Sort": show_quick_sort_code,
-    # "Comb Sort": show_comb_sort_code,
+    "Selection Sort": (show_selection_code,show_selection_explaination,visualise_selection_sort),
+    # "Bubble Sort": (show_bubble_code,show_bubble_explaination,visualise_bubble_sort),
+    # "Insertion Sort": (show_insertion_code,show_insertion_explaination,visualise_insertion_sort),
+    # "Merge Sort": (show_merge_code,show_merge_explaination,visualise_merge_sort), 
+    # "Heap Sort": (show_heap_code,show_heap_explaination,visualise_heap_sort),   
+    # "Bucket Sort": (show_bucket_code,show_bucket_explaination,visualise_selection_sort),  # Replace show_code with the actual function
+    # "Quick Sort": (show_selection_code,show_selection_explaination,visualise_selection_sort),
+    # "Comb Sort": (show_selection_code,show_selection_explaination,visualise_selection_sort),
 }
 def show_code_and_explaination(sortingOption):
     
