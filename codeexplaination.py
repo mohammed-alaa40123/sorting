@@ -31,20 +31,20 @@ def show_code_and_explaination(sortingOption):
             with col1:
                 st.code(selected_show_code_function("Python"), language='python')
             with col2:
-                st.markdown(img_to_bytes("images/python.jpg"), unsafe_allow_html=True)
+                st.write(img_to_bytes("images/python.jpg"), unsafe_allow_html=True)
             
         with tab2:
             col1,col2 = st.columns(2)
             with col1:
                 st.code(selected_show_code_function("CPP"), language="cpp")
             with col2:
-                st.markdown(img_to_bytes("images/cpp.png"), unsafe_allow_html=True)
+                st.write(img_to_bytes("images/cpp.png"), unsafe_allow_html=True)
         with tab3:
             col1,col2 = st.columns(2)
 
             with col1:
                 st.code(selected_show_code_function("Java"), language='java')
             with col2:
-                st.markdown(img_to_bytes("images/java.png"), unsafe_allow_html=True)
+                st.write(img_to_bytes("images/java.png"), unsafe_allow_html=True)
     except Exception as e:
         print(e)

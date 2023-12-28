@@ -124,6 +124,6 @@ def show_selection_explaination():
 </ul>
 </article>
 </div>"""
-    st.markdown(content,unsafe_allow_html=True)
+    st.write(content,unsafe_allow_html=True)
     st.link_button("For More info", "https://www.geeksforgeeks.org/selection-sort/")
 
