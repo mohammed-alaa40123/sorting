@@ -72,6 +72,4 @@ if play_button:
         with plot_spot:
             st.plotly_chart(figure)
             
-st.header("Description")            
-show_selection_explaination()
-show_code(sortingOption)
+show_code_and_explaination(sortingOption)
