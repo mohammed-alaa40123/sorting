@@ -134,3 +134,31 @@ def mainheap():
         frames,fframes = h_heap_sort(arr)
         visualize_heap_sort(frames,fframes)
 
+def show_heap_explaination():
+        content =  """<div><article>
+<h2>Idea</h2>
+<p>This algorithm mainly depends on inseting elements into a maxheap ,then we extrat the maximum element and put it in the list and we do this operation till the heap is empty and we put elements in reverse order(i.e from end of list to the beginning of it)</p>
+<h2>Complexity analysis</h2>
+<ul>
+<li>
+<h3>Average case complexity</h3>
+<p>At any case the complexity will be O(n*log(n)) as we insert n items into the heap ,then we remove them ,and at each time we remove elements from the heap, the heap takes time log(n) to maxheapify</p>
+</li>
+<li>
+<h3>Best case complexity</h3>
+<p>At any case the complexity will be O(n*log(n)) as we insert n items into the heap ,then we remove them ,and at each time we remove elements from the heap, the heap takes time log(n) to maxheapify</p>
+</li>
+<li>
+<h3>Worst case complexity</h3>
+<p>At any case the complexity will be O(n*log(n)) as we insert n items into the heap ,then we remove them ,and at each time we remove elements from the heap, the heap takes time log(n) to maxheapify</p>
+</li>
+<li>
+<h3>Space complexity</h3>
+<p></p>
+</li>
+</ul>
+</article>
+
+</div>"""
+        st.write(content,unsafe_allow_html=True)
+        st.link_button("For More info", "https://www.geeksforgeeks.org/bucket-sort-2/")
