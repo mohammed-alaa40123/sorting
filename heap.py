@@ -41,7 +41,7 @@ def h_heap_sort(lst):
 
     return frames,fframes
 
-def visualize_heap_sort(frames,fframes):
+def visualize_heap_sort(frames,fframes,speed):
     fig = go.Figure()
     placeholder = st.empty()
     list_placeholder = st.empty()
@@ -105,7 +105,7 @@ def visualize_heap_sort(frames,fframes):
         fig.update_layout(showlegend=False)
         fig.update_xaxes(visible=False)
         fig.update_yaxes(visible=False)
-
+        time.sleep(1-speed/100)
         placeholder.plotly_chart(fig, use_container_width=True)
         
         if len(frame)!=len(fframes):
@@ -126,13 +126,13 @@ def show_complexity_heap():
     st.sidebar.dataframe(complexity_df,hide_index=True)
 
 
-def mainheap():
+def mainheap(speed):
     arr = st.text_input("Enter a list of numbers (space-separated):")
     arr = list(map(int, arr.split()))
 
     if st.button("Heap Sort"):
         frames,fframes = h_heap_sort(arr)
-        visualize_heap_sort(frames,fframes)
+        visualize_heap_sort(frames,fframes,speed)
 
 def show_heap_explaination():
         content =  """<div><article>
@@ -161,4 +161,201 @@ def show_heap_explaination():
 
 </div>"""
         st.write(content,unsafe_allow_html=True)
-        st.link_button("For More info", "https://www.geeksforgeeks.org/bucket-sort-2/")
+        st.link_button("For More info", "https://www.geeksforgeeks.org/heap-sort/")
+        
+def show_heap_code(lang):
+    if lang == "Python":
+        code = """
+def heapify(lst, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and lst[i] < lst[left]:  
+        largest = left
+
+    if right < n and lst[largest] < lst[right]:  
+        largest = right
+
+    if largest != i:
+        lst[i], lst[largest] = lst[largest], lst[i]
+        heapify(lst, n, largest)
+
+
+def h_heap_sort(lst):
+    lst = lst.copy()
+    n = len(lst)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(lst, n, i)
+
+    while n > 0:
+        lst[0], lst[n - 1] = lst[n - 1], lst[0]
+        heapify(lst, n - 1, 0)
+        n -= 1
+
+    return lst
+       """
+    elif lang == "CPP":
+        code = """
+// C++ program for implementation of Heap Sort
+
+#include <iostream>
+using namespace std;
+
+// To heapify a subtree rooted with node i
+// which is an index in arr[].
+// n is size of heap
+void heapify(int arr[], int N, int i)
+{
+
+	// Initialize largest as root
+	int largest = i;
+
+	// left = 2*i + 1
+	int l = 2 * i + 1;
+
+	// right = 2*i + 2
+	int r = 2 * i + 2;
+
+	// If left child is larger than root
+	if (l < N && arr[l] > arr[largest])
+		largest = l;
+
+	// If right child is larger than largest
+	// so far
+	if (r < N && arr[r] > arr[largest])
+		largest = r;
+
+	// If largest is not root
+	if (largest != i) {
+		swap(arr[i], arr[largest]);
+
+		// Recursively heapify the affected
+		// sub-tree
+		heapify(arr, N, largest);
+	}
+}
+
+// Main function to do heap sort
+void heapSort(int arr[], int N)
+{
+
+	// Build heap (rearrange array)
+	for (int i = N / 2 - 1; i >= 0; i--)
+		heapify(arr, N, i);
+
+	// One by one extract an element
+	// from heap
+	for (int i = N - 1; i > 0; i--) {
+
+		// Move current root to end
+		swap(arr[0], arr[i]);
+
+		// call max heapify on the reduced heap
+		heapify(arr, i, 0);
+	}
+}
+
+// A utility function to print array of size n
+void printArray(int arr[], int N)
+{
+	for (int i = 0; i < N; ++i)
+		cout << arr[i] << " ";
+	cout << "\n";
+}
+
+// Driver's code
+int main()
+{
+	int arr[] = { 12, 11, 13, 5, 6, 7 };
+	int N = sizeof(arr) / sizeof(arr[0]);
+
+	// Function call
+	heapSort(arr, N);
+
+	cout << "Sorted array is \n";
+	printArray(arr, N);
+}
+
+"""
+
+    else:
+        code="""
+// Java program for implementation of Heap Sort
+
+public class HeapSort {
+	public void sort(int arr[])
+	{
+		int N = arr.length;
+
+		// Build heap (rearrange array)
+		for (int i = N / 2 - 1; i >= 0; i--)
+			heapify(arr, N, i);
+
+		// One by one extract an element from heap
+		for (int i = N - 1; i > 0; i--) {
+			// Move current root to end
+			int temp = arr[0];
+			arr[0] = arr[i];
+			arr[i] = temp;
+
+			// call max heapify on the reduced heap
+			heapify(arr, i, 0);
+		}
+	}
+
+	// To heapify a subtree rooted with node i which is
+	// an index in arr[]. n is size of heap
+	void heapify(int arr[], int N, int i)
+	{
+		int largest = i; // Initialize largest as root
+		int l = 2 * i + 1; // left = 2*i + 1
+		int r = 2 * i + 2; // right = 2*i + 2
+
+		// If left child is larger than root
+		if (l < N && arr[l] > arr[largest])
+			largest = l;
+
+		// If right child is larger than largest so far
+		if (r < N && arr[r] > arr[largest])
+			largest = r;
+
+		// If largest is not root
+		if (largest != i) {
+			int swap = arr[i];
+			arr[i] = arr[largest];
+			arr[largest] = swap;
+
+			// Recursively heapify the affected sub-tree
+			heapify(arr, N, largest);
+		}
+	}
+
+	/* A utility function to print array of size n */
+	static void printArray(int arr[])
+	{
+		int N = arr.length;
+
+		for (int i = 0; i < N; ++i)
+			System.out.print(arr[i] + " ");
+		System.out.println();
+	}
+
+	// Driver's code
+	public static void main(String args[])
+	{
+		int arr[] = { 12, 11, 13, 5, 6, 7 };
+		int N = arr.length;
+
+		// Function call
+		HeapSort ob = new HeapSort();
+		ob.sort(arr);
+
+		System.out.println("Sorted array is");
+		printArray(arr);
+	}
+}
+
+""" 
+    return code
+

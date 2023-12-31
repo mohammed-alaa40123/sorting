@@ -13,7 +13,7 @@ sorting_options_mapping = {
     "Bubble Sort": (show_bubble_code,show_bubble_explaination,visualise_bubble_sort,show_complexity_bubble),
     "Insertion Sort": (show_insertion_code,show_insertion_explaination,visualise_insertion_sort,show_complexity_insertion),
     "Merge Sort": (show_merge_code,show_merge_explaination,visualize_mergesort,show_complexity_merge), 
-    # "Heap Sort": (show_heap_code,show_heap_explaination,mainheap,show_complexity_heap),   
+    "Heap Sort": (show_heap_code,show_heap_explaination,mainheap,show_complexity_heap),   
     "Bucket Sort": (show_bucket_code,show_bucket_explaination,mainbucket,show_complexity_bucket),
     "Quick Sort": (show_quick_code,show_quick_explaination,visualise_quick_sort,show_complexity_quicksort),
     "Comb Sort": (show_comb_code,show_comb_explaination,visualise_comb_sort,show_complexity_comb),
