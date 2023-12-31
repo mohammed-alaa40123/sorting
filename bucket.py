@@ -4,7 +4,7 @@ import time
 import numpy as np
 import streamlit as st
 
-st.session_state.sidebar_state = 'collapsed'
+# st.session_state.sidebar_state = 'collapsed'
 
 
 def visualize_linked_lists(linked_lists,length):
