@@ -19,7 +19,7 @@ Each algorithm is implemented in a separate Python file in this repository.
 
 
 
-## Demp App
+## Demo App
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sortingeui.streamlit.app/)
 
 
