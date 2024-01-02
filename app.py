@@ -1,15 +1,17 @@
 import streamlit as st
 import numpy as np
 from time import time
+import signature
 from codeexplaination import *
 import plotly.express as px
 st.set_page_config(layout='wide',
                    initial_sidebar_state=st.session_state.get('sidebar_state','expanded'))
-
+signature.show_signatures()
 st.sidebar.title("Select sorting type")
 sortingOption = st.sidebar.selectbox("Sorting Algoritms", options=["Selection Sort","Bubble Sort","Merge Sort", "Quick Sort", "Insertion Sort","Heap Sort","Comb Sort","Bucket Sort"])
 st.title(f"{sortingOption} Visualisation")
 amount = 0
+
 
 if sortingOption != "Heap Sort" and sortingOption != "Bucket Sort":
     amount = st.slider("Select number of elements", min_value=5, max_value=100)
