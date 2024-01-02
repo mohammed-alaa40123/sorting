@@ -25,6 +25,9 @@ def show_visualisation_and_complexity(sortingOption,x,lst,speed=70):
     show_complexity()    
     if sortingOption == "Bucket Sort" or sortingOption == "Heap Sort":
         visualise_sort(speed)
+    elif sortingOption == "Quick Sort":
+        figure,frames,colors=visualise_sort(x,lst)
+        return figure,frames,colors
     else:    
         figure,frames=visualise_sort(x,lst)
     return figure,frames

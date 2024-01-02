@@ -69,8 +69,8 @@ def visualize_mergesort(x,lst):
     
     mergeSort(lst,0,len(lst)-1,frames)
    
-    print(lst)
-    print(frames)
+    # print(lst)
+    # print(frames)
     figure = px.bar(x, y=frames[0],color=frames[0])
     return figure, frames
 

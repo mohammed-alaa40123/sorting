@@ -22,7 +22,12 @@ with col3:
     with cont:
         speed = st.slider("Speed",0,100,50)
 with col1:
-    figure,frames=show_visualisation_and_complexity(sortingOption,x,lst,speed)  
+    if sortingOption != "Quick Sort":
+        figure,frames=show_visualisation_and_complexity(sortingOption,x,lst,speed) 
+        colors=frames
+ 
+    else:
+        figure,frames,colors=show_visualisation_and_complexity(sortingOption,x,lst,speed)  
     if figure is not None:        
         figure.update_layout(showlegend=False)
         figure.update_xaxes(visible=False)
@@ -34,8 +39,8 @@ with col1:
             play_button = st.button(f"{sortingOption}",key=f"{0}")
 
         if play_button:
-            for frame in frames[1:]:
-                figure = px.bar(x=x, y=frame,color=frame)
+            for frame in range(1,len(frames)):
+                figure = px.bar(x=x, y=frames[frame],color=colors[frame], color_discrete_map="identity")
                 figure.update_layout(showlegend=False)
                 figure.update_xaxes(visible=False)
                 figure.update_yaxes(visible=False)
