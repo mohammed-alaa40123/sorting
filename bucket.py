@@ -41,7 +41,7 @@ def visualize_linked_lists(linked_lists,length):
                 x=[x],
                 y=[y],
                 mode='markers+text',
-                marker=dict(size=10, color='blue'),
+                marker=dict(size=20, color='blue'),
                 text=[f"{linked_list[i]}"],
                 textposition='middle center',
                 hoverinfo='text',
@@ -75,10 +75,13 @@ def vis_quick_sort(x,lst,ind):
    
     frames=[lst.copy()]
     figures=[]
-    quick_sort(lst,0,len(lst)-1,frames)
+    color=len(lst)*["blue"]
+    colors=[]
+    colors.append(color)
+    quick_sort(np.array(lst),0,len(lst)-1,frames,colors)
     
-    for i in frames:
-        figure = px.bar(x=x, y=i,title=f"Sorting Bucket #{ind}")
+    for i in range(len(frames)):
+        figure = px.bar(x=x, y=frames[i],color=colors[i],title=f"Sorting Bucket #{ind}")
         figure.update_layout(showlegend=False)
         figure.update_xaxes(visible=False)
         figure.update_yaxes(visible=False)
