@@ -122,7 +122,7 @@ def bucket_sort(nb,l):
             
             frames.extend(fr)
             
-            print(bucket)
+            
             for j in bucket[i]:
                 array.append(j)
                 frames.append([array.copy(),'L'])
