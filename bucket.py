@@ -78,8 +78,13 @@ def vis_quick_sort(x,lst,ind):
     color=len(lst)*["blue"]
     colors=[]
     colors.append(color)
-    quick_sort(np.array(lst),0,len(lst)-1,frames,colors)
+    nl=np.array(lst.copy())
+    quick_sort(nl,0,len(lst)-1,frames,colors)
+    lst=nl.copy().tolist()
     
+    
+    
+
     for i in range(len(frames)):
         figure = px.bar(x=x, y=frames[i],color=colors[i],title=f"Sorting Bucket #{ind}")
         figure.update_layout(showlegend=False)
@@ -87,7 +92,7 @@ def vis_quick_sort(x,lst,ind):
         figure.update_yaxes(visible=False)
         figures.append([figure,'Q'])
     
-    return figures
+    return figures,lst
 
 def bucket_sort(nb,l):
     length=len(l)
@@ -108,13 +113,17 @@ def bucket_sort(nb,l):
         frames.append([visualize_linked_lists(bucket,length),'B'])
     array=[]
     index=0
-    for i in bucket:
+    for i in range(len(bucket)):
         index=index+1
-        sz=len(i)
+        sz=len(bucket[i])
         if sz!=0:
             x=np.arange(0,sz,1)
-            frames.extend(vis_quick_sort(x,i,index))
-            for j in i:
+            fr,bucket[i]=vis_quick_sort(x,bucket[i],index)
+            
+            frames.extend(fr)
+            
+            print(bucket)
+            for j in bucket[i]:
                 array.append(j)
                 frames.append([array.copy(),'L'])
             frames.append([visualize_linked_lists(bucket,length),'B'])
