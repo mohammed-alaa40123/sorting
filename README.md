@@ -1,5 +1,5 @@
-# Sorting Algorithms in Python
-
+# Sorting Algorithms Visualisation in Python
+This project is part of our CSE 221 course at Egypt University of Informatics (EUI)
 This repository contains implementations of various sorting algorithms in Python. These algorithms are commonly used in computer science and are essential for understanding fundamental sorting concepts.
 
 ## Algorithms Included
